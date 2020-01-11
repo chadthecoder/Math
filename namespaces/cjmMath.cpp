@@ -3,75 +3,88 @@
 
 namespace cjmMath
 {
-bool isPrime(int n)
-{
-    if (n == 2)
-        return true;
-    if (n == 3)
-        return true;
-    if (n % 2 == 0)
-        return false;
-    if (n % 3 == 0)
-        return false;
-
-    int i = 5, w = 2;
-
-    while (i * i <= n)
+    bool isPrime(int n)
     {
-        if (n % i == 0)
-        {
+        if (n == 2)
+            return true;
+        if (n == 3)
+            return true;
+        if (n % 2 == 0)
             return false;
-        }
-        i += w;
-        w = 6 - w;
-    }
-    return true;
-}
+        if (n % 3 == 0)
+            return false;
 
-std::vector<int> primeNums(int i, int j)
-{
-    std::vector<int> v;
-    for (i; i <= j; i++)
-    {
-        if (isPrime(i))
+        int i = 5, w = 2;
+
+        while (i * i <= n)
         {
-            v.push_back(i);
+            if (n % i == 0)
+            {
+                return false;
+            }
+            i += w;
+            w = 6 - w;
         }
+        return true;
     }
-}
 
-std::vector<int> primeFactors(int num)
-{
-    std::vector<int> primeFactors;
-    for (int i = 2; i < num; i++)
+    std::vector<int> primeNums(int i, int j)
     {
-        while (num % i == 0)
+        std::vector<int> v;
+        for (i; i <= j; i++)
         {
-            num /= i;
-            primeFactors.push_back(i);
+            if (isPrime(i))
+            {
+                v.push_back(i);
+            }
         }
     }
-    return primeFactors;
-}
 
-void printVector(std::vector<int> v)
-{
-    for (int i = 0; i < v.size(); i++)
+    std::vector<int> primeFactors(int num)
     {
-        std::cout << v[i] << " ";
+        std::vector<int> primeFactors;
+        for (int i = 2; i < num; i++)
+        {
+            while (num % i == 0)
+            {
+                num /= i;
+                primeFactors.push_back(i);
+            }
+        }
+        return primeFactors;
     }
-}
 
-double getMod(double a, double b)
-{
-    return (a - (b * ((int)a / (int)b)));
-}
+    void printVector(std::vector<int> v)
+    {
+        for (int i = 0; i < v.size(); i++)
+        {
+            std::cout << v[i] << " ";
+        }
+    }
 
-template <class num> //put before function or class, can use to use wild card class
-std::vector<num> chadSort()
-{
-    std::vector<num> nums;
-    return nums;
-}
+    double getMod(double a, double b)
+    {
+        return (a - (b * ((int)a / (int)b)));
+    }
 
+    template <class num> //put before function or class, can use to use wild card class
+    std::vector<num> chadSort()
+    {
+        std::vector<num> nums;
+        return nums;
+    }
+
+    int getGCD(int x, int y)
+    {
+        int r = -1;
+        int a = std::max(x, y);
+        int b = std::min(x, y);
+        while(a%b != 0)
+        {
+            r = a%b;
+            a = b;
+            b = r;
+        }
+        return b;
+    }
 } // namespace cjmMath

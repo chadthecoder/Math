@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# certain math files
+bin/mod
+bin/gcd
