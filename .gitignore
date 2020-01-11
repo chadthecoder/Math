@@ -34,3 +34,4 @@
 # certain math files
 bin/mod
 bin/gcd
+bin/isPrime
